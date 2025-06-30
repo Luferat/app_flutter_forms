@@ -413,7 +413,7 @@ class _ContactsPage extends State<ContactsPage> {
 
       // Define a URL do endpoint
       // Use 10.0.2.2 para Android Emulator
-      final String apiUrl = 'http://localhost:8080/api/contact';
+      final String apiUrl = 'http://localhost:8080/contact';
 
       // Debug: imprime os valores no console (remova depois dos testes)
       if (kDebugMode) {

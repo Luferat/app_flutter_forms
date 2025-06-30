@@ -25,3 +25,6 @@ doc/api/
 
 .flutter-plugins
 .flutter-plugins-dependencies
+
+# Ignora os "Node Modules" da API fake
+/apifake/node_modules
