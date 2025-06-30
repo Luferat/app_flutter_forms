@@ -53,7 +53,7 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
 
       routes: {
-        '/': (context) => const HomePage(),
+        '/': (context) => const Home_Page(),
         '/test': (context) => const TestPage(),
         '/pagesl': (context) => const ModelPageSl(),
         '/pagesf': (context) => const ModelPageSf(),
@@ -64,8 +64,8 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+class Home_Page extends StatelessWidget {
+  const Home_Page({super.key});
 
   @override
   Widget build(BuildContext context) {
