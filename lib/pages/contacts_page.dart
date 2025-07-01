@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
+import '../config.dart';
 
 final Dio _dio = Dio();
 
@@ -18,10 +19,6 @@ class _ContactsPage extends State<ContactsPage> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _subjectController = TextEditingController();
   final TextEditingController _messageController = TextEditingController();
-
-  final RegExp _emailRegex = RegExp(
-    r'^[a-zA-Z0-9.!#$%&*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?)*$',
-  );
 
   @override
   void dispose() {
@@ -104,7 +101,7 @@ class _ContactsPage extends State<ContactsPage> {
                     return 'Por favor, insira seu email.';
                   }
                   // Validação de e-mail com Regex
-                  if (!_emailRegex.hasMatch(value)) {
+                  if (!Config.emailRegex.hasMatch(value)) {
                     return 'Por favor, insira um email válido.';
                   }
                   return null;
@@ -212,10 +209,6 @@ class _ContactsPage extends State<ContactsPage> {
         'message': message,
       };
 
-      // Define a URL do endpoint
-      // Use 10.0.2.2 para Android Emulator
-      final String apiUrl = 'http://localhost:8080/contact';
-
       // Debug: imprime os valores no console (remova depois dos testes)
       if (kDebugMode) {
         print('\n\n--------------------');
@@ -229,7 +222,7 @@ class _ContactsPage extends State<ContactsPage> {
       try {
         // Envia a requisição POST com Dio de forma assíncrona
         final Response response = await _dio.post(
-          apiUrl,
+          Config.endpoint['contact']!,
           data: formData, // O Dio converte automaticamente o Map para JSON
           options: Options(
             // Define o Content-Type como JSON

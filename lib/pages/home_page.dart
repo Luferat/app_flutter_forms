@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
+import '../config.dart';
 
 /*
 Internacionalização.
@@ -40,16 +41,9 @@ class _HomePage extends State<HomePage> {
       _error = null; // Limpa qualquer erro anterior
     });
 
-    // URL da API do JSON Server para livros
-    // Isso deveria estar em um config global
-    // status=ON e sort=created_at já estão implementados na API real
-    final String apiUrl =
-        'http://localhost:8080/books?status=ON&_sort=created_at';
-    // Só executa daqui para baixo quando "response" existir
-
     try {
       // Recebe os dados da API quando eles estiverem prontos
-      final Response response = await _dio.get(apiUrl);
+      final Response response = await _dio.get(Config.endpoint['books']!);
 
       // Debug: Mostra no terminal, os dados recebeidos, já como List<Map>
       // Apague isso em produção

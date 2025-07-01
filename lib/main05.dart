@@ -8,6 +8,7 @@ import 'pages/about_page.dart';
 import 'pages/test_page.dart';
 import 'pages/contacts_page.dart';
 import 'pages/book_page_details.dart';
+import 'config.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Hello World',
+      title: Config.appName,
       theme: ThemeData(
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,

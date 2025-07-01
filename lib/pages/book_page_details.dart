@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
-import 'package:intl/intl.dart'; // Para kDebugMode
+import 'package:intl/intl.dart';
+import '../config.dart';
 
 // Instância do Dio (a mesma que você usa em main.dart)
 // É importante que seja a mesma instância ou uma nova configurada da mesma forma,
@@ -39,7 +40,7 @@ class _BookDetailPageState extends State<BookDetailPage> {
 
     // URL da API para buscar um livro específico pelo ID
     // Ex: http://localhost:8080/books/1
-    final String apiUrl = 'http://localhost:8080/books/${widget.bookId}';
+    final String apiUrl =  '${Config.endpoint['books']}/${widget.bookId}';
 
     try {
       final Response response = await _dio.get(apiUrl);
